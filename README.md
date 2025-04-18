@@ -50,5 +50,5 @@ O sistema possui várias funcionalidades organizadas por menus no terminal. Veja
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/sistema-educacional.git
+   git clone https://github.com/guilhermecunha777/projeto-do-pim.git
 

@@ -1,0 +1,1 @@
+ # Funções auxiliares (validações, limpar tela, salvar/carregar dados)

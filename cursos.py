@@ -1,5 +1,5 @@
 # Módulo com cursos e disciplinas
-def exibir_menu():
+def exibir_menu2():
     print("\n=== MENU DE CURSOS E DISCIPLINAS ===")
     print("1. Tecnologia da Informação e Comunicação")
     print("2. Matemática e Estatística")
@@ -23,18 +23,3 @@ def selecionar_disciplina(opcao):
         8: "Cibersegurança"
     }
     return disciplinas.get(opcao, None)
-
-while True:
-    exibir_menu()
-    try:
-        escolha = int(input("Selecione uma opção (0 para sair): "))
-        if escolha == 0:
-            print("Saindo do programa. Até logo!")
-            break
-        disciplina = selecionar_disciplina(escolha)
-        if disciplina:
-            print(f"Você selecionou: {disciplina}")
-        else:
-            print("Opção inválida. Tente novamente.")
-    except ValueError:
-        print("Entrada inválida. Digite um número correspondente à opção.")

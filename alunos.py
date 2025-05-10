@@ -38,3 +38,4 @@ def remover_aluno():
             print("indice inválido.")
     except ValueError:
         print("entrada inválida.")
+        

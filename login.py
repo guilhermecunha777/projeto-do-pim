@@ -5,9 +5,6 @@ from utils import carregar_dados
 
 CAMINHO_ARQUIVO = 'data/alunos.json'
 
-def gerar_hash(senha):
-    return hashlib.sha256(senha.encode('utf-8')).hexdigest()
-
 def carregar_dados(caminho):
     try:
         with open(caminho, 'r') as arquivo:

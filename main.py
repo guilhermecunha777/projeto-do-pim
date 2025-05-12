@@ -30,7 +30,7 @@ def exibir_menu():
                         print("Entrada inválida. Digite um número correspondente à opção.")
         
         elif escolha == "2":
-            cadastracr_alunos()
+            cadastrar_alunos()
             
         elif escolha == "0":
             print("Encerrando o sistema.")

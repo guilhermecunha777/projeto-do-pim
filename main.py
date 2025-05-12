@@ -13,7 +13,7 @@ def exibir_menu():
         escolha = input("Escolha uma opção: ")
 
         if escolha == "1":
-            # if autenticar_usuario() == True:
+            if autenticar_usuario():
                 while True:
                     exibir_menu2()
                     try:
@@ -30,7 +30,7 @@ def exibir_menu():
                         print("Entrada inválida. Digite um número correspondente à opção.")
         
         elif escolha == "2":
-            cadastrar_alunos()
+            cadastracr_alunos()
             
         elif escolha == "0":
             print("Encerrando o sistema.")

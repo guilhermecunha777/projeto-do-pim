@@ -1,7 +1,12 @@
 [
     {
         "nome": "gui",
-        "idade": "2",
-        "matricula": "12"
+        "idade": "18",
+        "senha": "1234"
+    },
+    {
+        "nome": "gui",
+        "idade": "18",
+        "senha": "1234"
     }
 ]

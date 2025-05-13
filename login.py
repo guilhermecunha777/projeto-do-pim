@@ -5,13 +5,32 @@ from utils import carregar_dados
 
 CAMINHO_ARQUIVO = 'data/alunos.json'
 
-def carregar_dados(caminho):
-    try:
-        with open(caminho, 'r') as arquivo:
-            return json.load(arquivo)
-    except (FileNotFoundError, json.JSONDecodeError):
-        print("Erro ao carregar os dados dos usuários.")
+def gerar_hash(senha):
+    return hashlib.sha256(senha.encode('utf-8')).hexdigest()
+
+def carregar_usuarios():
+    if not os.path.exists(CAMINHO_ARQUIVO):
         return {}
+    with open(CAMINHO_ARQUIVO, "r") as arquivo:
+        try:
+            return json.load(arquivo)
+        except json.JSONDecodeError:
+            return {}
+
+def salvar_usuarios(usuarios):
+    with open(CAMINHO_ARQUIVO, "w") as arquivo:
+        json.dump(usuarios, arquivo, indent=4)
+
+def autenticar_usuario():
+    usuarios = carregar_usuarios()
+    usuario = input("Digite o nome de usuário: ").strip()
+    senha = input("Digite a senha: ").strip()
+    senha_hash = gerar_hash(senha)
+
+    if usuario in usuarios and usuarios[usuario] == senha_hash:
+        print("Login bem-sucedido!")
+    else:
+        print("Usuário ou senha incorretos.")
 
 def autenticar_usuario():
     alunos = carregar_dados(CAMINHO_ARQUIVO)
@@ -22,6 +41,7 @@ def autenticar_usuario():
         print(f"Login bem-sucedido. Bem-vindo, {nome}!")
     else:
         print("Usuário ou senha incorretos.")
+
 
 def lista_alunos():
     alunos = carregar_dados(CAMINHO_ARQUIVO)

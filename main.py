@@ -1,6 +1,6 @@
 # Arquivo principal que executa o menu do sistema
-from login import autenticar_usuario
 from alunos import cadastrar_alunos
+from login import autenticar_usuario
 from cursos import exibir_menu2, selecionar_disciplina
 
 def exibir_menu():
@@ -17,17 +17,17 @@ def exibir_menu():
                 while True:
                     exibir_menu2()
                     try:
-                        escolha = int(input("Selecione uma opção (0 para sair): "))
-                        if escolha == 0:
-                            print("Saindo do programa. Até logo!")
+                        escolha2 = int(input("Selecione uma disciplina (0 para voltar): "))
+                        if escolha2 == 0:
+                            print("Voltando ao menu principal...")
                             break
-                        disciplina = selecionar_disciplina(escolha)
+                        disciplina = selecionar_disciplina(escolha2)
                         if disciplina:
                             print(f"Você selecionou: {disciplina}")
                         else:
                             print("Opção inválida. Tente novamente.")
                     except ValueError:
-                        print("Entrada inválida. Digite um número correspondente à opção.")
+                        print("Entrada inválida. Digite um número.")
         
         elif escolha == "2":
             cadastrar_alunos()
@@ -38,8 +38,6 @@ def exibir_menu():
         
         else:
             print("Opção inválida.")
-
-# Execução principal
 
 if __name__ == "__main__":
     exibir_menu()

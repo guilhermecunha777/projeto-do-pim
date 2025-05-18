@@ -13,7 +13,7 @@ def cadastrar_professor():
     professores = carregar_professor()
     nome = input("nome do professor: ").strip()
     senha = input("digite a senha: ").strip()
-    disciplina = input("disciplina: ").strip()
+    # disciplina = input("disciplina: ").strip()
     
     senha_hash = gerar_hash(senha)
     professores[nome] = senha_hash

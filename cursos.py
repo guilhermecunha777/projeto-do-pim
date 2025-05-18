@@ -23,3 +23,7 @@ def selecionar_disciplina(opcao):
         8: "Cibersegurança"
     }
     return disciplinas.get(opcao, None)
+
+def menu_prof():
+    print("bom dia professor")
+    print("tudo bem?")

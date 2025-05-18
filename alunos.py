@@ -12,11 +12,12 @@ def gerar_hash(senha):
 def cadastrar_alunos():
     usuarios = carregar_usuarios()
     usuario = input("Digite o nome de usuário: ").strip()
-    senha = input("Digite a senha: ").strip()
 
     if usuario in usuarios:
         print("Usuário já existe. Tente outro nome.")
         return
+    
+    senha = input("Digite a senha: ").strip()
 
     senha_hash = gerar_hash(senha)
     usuarios[usuario] = senha_hash

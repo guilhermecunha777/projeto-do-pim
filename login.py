@@ -5,9 +5,15 @@ from utils import carregar_dados
 from cursos import exibir_menu2,selecionar_disciplina
 
 CAMINHO_ARQUIVO = 'data/alunos.json'
+CAMINHO_PROF = 'data/professores.json'
 
 def gerar_hash(senha):
     return hashlib.sha256(senha.encode('utf-8')).hexdigest()
+
+def salvar_usuarios(usuarios):
+    with open(CAMINHO_ARQUIVO, "w") as arquivo:
+        json.dump(usuarios, arquivo, indent=4)
+
 
 def carregar_usuarios():
     if not os.path.exists(CAMINHO_ARQUIVO):
@@ -18,9 +24,18 @@ def carregar_usuarios():
         except json.JSONDecodeError:
             return {}
 
-def salvar_usuarios(usuarios):
-    with open(CAMINHO_ARQUIVO, "w") as arquivo:
-        json.dump(usuarios, arquivo, indent=4)
+def salvar_professor(professor):
+    with open(CAMINHO_PROF, "w") as arquivo:
+        json.dump(professor, arquivo, indent=4)
+
+def carregar_professor():
+    if not os.path.exists(CAMINHO_PROF):
+        return {}
+    with open(CAMINHO_PROF, "r") as arquivo:
+        try:
+            return json.load(arquivo)
+        except json.JSONDecodeError:
+            return {}
 
 def autenticar_usuario():
     usuarios = carregar_usuarios()
@@ -47,6 +62,15 @@ def autenticar_usuario():
     else:
         print("Usuário ou senha incorretos.")
 
+def autenticar_professor():
+    professores = carregar_professor()
+    professore = input("digite o seu nome: ").strip
+    senha = input("digite a sua senha: ")
+    senha_hash = gerar_hash(senha)
+    
+    if professore in professores and professores[professore] == senha_hash:
+        print("login bem-sucedido!")
+
 def lista_alunos():
     alunos = carregar_dados(CAMINHO_ARQUIVO)
     if not alunos:
@@ -55,12 +79,10 @@ def lista_alunos():
     for idx, aluno in enumerate(alunos, start=1):
         print(f"{idx}. {aluno['nome']} | Idade: {aluno['idade']} |senha: {aluno['senha']}")
 
-# def autenticar_usuario():
-#     alunos = carregar_dados(CAMINHO_ARQUIVO)
-#     nome = input("Usuário: ").strip().lower()
-#     senha = input("Senha: ").strip()
-
-#     if nome in alunos and alunos[nome] == gerar_hash(senha):
-#         print(f"Login bem-sucedido. Bem-vindo, {nome}!")
-#     else:
-#         print("Usuário ou senha incorretos.")
+def lista_professores():
+    professores = carregar_dados(CAMINHO_PROF)
+    if not professores:
+        print("nenhum professor cadastrado.")
+        return
+    for idx, prof in enumerate(professores, start=1):
+        print(f"{idx}. {prof['nome']} | disciplina: {prof['disciplina']} ")

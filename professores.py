@@ -1,27 +1,24 @@
 # Módulo com funções e classe Professor
+import json
+import hashlib
 from utils import salvar_dados, carregar_dados
+from login import lista_professores ,carregar_professor ,salvar_professor
 
 CAMINHO_ARQUIVO = 'data/professores.json'
 
-def cadastrar_professor():
-    nome = input("nome do professor: ")
-    disciplina = input("disciplina: ")
-    
-    professores = carregar_dados(CAMINHO_ARQUIVO)
-    professores.append({
-        "nome": nome,
-        "disciplina": disciplina
-    })
-    salvar_dados(CAMINHO_ARQUIVO, professores)
-    print("professor cadastrado com sucesso!")
+def gerar_hash(senha):
+    return hashlib.sha256(senha.encode()).hexdigest()
 
-def lista_professores():
-    professores = carregar_dados(CAMINHO_ARQUIVO)
-    if not professores:
-        print("nenhum professor cadastrado.")
-        return
-    for idx, prof in enumerate(professores, start=1):
-        print(f"{idx}. {prof['nome']} | disciplina: {prof['disciplina']} ")
+def cadastrar_professor():
+    professores = carregar_professor()
+    nome = input("nome do professor: ").strip()
+    senha = input("digite a senha: ").strip()
+    disciplina = input("disciplina: ").strip()
+    
+    senha_hash = gerar_hash(senha)
+    professores[nome] = senha_hash
+    salvar_professor(professores)
+    print("professor cadastrado com sucesso!")
 
 def remover_professores():
     lista_professores()

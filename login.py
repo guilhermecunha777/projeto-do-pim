@@ -3,9 +3,14 @@ import hashlib
 import os
 from utils import carregar_dados
 from cursos import exibir_menu2,selecionar_disciplina, menu_prof, resp
+from seguranca import bloqueio_tentativas
+
 
 CAMINHO_ARQUIVO = 'data/alunos.json'
 CAMINHO_PROF = 'data/professores.json'
+
+#instância global
+seguranca = bloqueio_tentativas()
 
 def gerar_hash(senha):
     return hashlib.sha256(senha.encode('utf-8')).hexdigest()
@@ -40,11 +45,19 @@ def carregar_professor():
 def autenticar_usuario():
     usuarios = carregar_usuarios()
     usuario = input("Digite o nome de usuário: ").strip()
+
+    #Verifica se o aluno esta bloqueado
+    pode, tempo_restante = seguranca.pode_tentar(usuario)
+    if not pode:
+        print(f"Numero de tentativas maximo. Tente novamente em {tempo_restante} segundos")
+        return
+    
     senha = input("Digite a senha: ").strip()
     senha_hash = gerar_hash(senha)
 
     if usuario in usuarios and usuarios[usuario] == senha_hash:
         print("Login bem-sucedido!")
+        seguranca.resetar_tentativas(usuario) # limpa as tentativas apos o login
         exibir_menu2()
         while True:
             try:
@@ -61,6 +74,9 @@ def autenticar_usuario():
                 print("Entrada inválida. Digite um número.")
     else:
         print("Usuário ou senha incorretos.")
+        bloqueio = seguranca.registrar_erro(usuario)
+        if bloqueio:
+            print(f"Numero de tentativas maximo. Tente novamente em {tempo_restante} segundos")
 
 def autenticar_professor():
     professores = carregar_professor()

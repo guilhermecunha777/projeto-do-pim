@@ -2,7 +2,7 @@ import json
 import hashlib
 import os
 from utils import carregar_dados
-from cursos import exibir_menu2,selecionar_disciplina,menu_prof
+from cursos import exibir_menu2,selecionar_disciplina, menu_prof, resp
 
 CAMINHO_ARQUIVO = 'data/alunos.json'
 CAMINHO_PROF = 'data/professores.json'
@@ -64,13 +64,28 @@ def autenticar_usuario():
 
 def autenticar_professor():
     professores = carregar_professor()
-    professore = input("digite o seu nome: ").strip
+    professor = input("digite o seu nome: ").strip()
     senha = input("digite a sua senha: ").strip()
     senha_hash = gerar_hash(senha)
     
-    if professore in professores and professores[professore] == senha_hash:
+    if professor in professores and professores[professor] == senha_hash:
         print("login bem-sucedido!")
         menu_prof()
+        while True:
+            try:
+                escolha2 = int(input("Selecione uma resposta (0 para voltar): "))
+                if escolha2  == 0:
+                    print("Voltando ao menu principal...")
+                    break
+                respo = resp(escolha2)
+                if respo:
+                    print(f"Você selecionou: {respo}")
+                else:
+                    print("Opção inválida. Tente novamente.")
+            except ValueError:
+                print("Entrada inválida. Digite um número.")
+    else:
+        print("erro no login")
 
 def lista_alunos():
     alunos = carregar_dados(CAMINHO_ARQUIVO)

@@ -27,3 +27,12 @@ def selecionar_disciplina(opcao):
 def menu_prof():
     print("bom dia professor")
     print("tudo bem?")
+    print('1- to bem')
+    print('2- não')
+
+def resp(opcao):
+    respo = {
+        1: "to bem",
+        2: "não"
+    }
+    return respo.get(opcao, None)

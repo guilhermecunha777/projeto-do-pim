@@ -1,4 +1,6 @@
 # Módulo com cursos e disciplinas
+from utils import add_cursos,listar_cursos
+
 def exibir_menu2():
     print("\n=== MENU DE CURSOS E DISCIPLINAS ===")
     print("1. Tecnologia da Informação e Comunicação")
@@ -25,14 +27,15 @@ def selecionar_disciplina(opcao):
     return disciplinas.get(opcao, None)
 
 def menu_prof():
-    print("bom dia professor")
-    print("tudo bem?")
-    print('1- to bem')
-    print('2- não')
-
-def resp(opcao):
-    respo = {
-        1: "to bem",
-        2: "não"
-    }
-    return respo.get(opcao, None)
+    print('1. adicionar um cursos')
+    print('2. listar os cursos')
+    opcao = input('digite um numero: ')
+    if opcao =='1':
+        add_cursos()
+        return
+    elif opcao == '2':
+        listar_cursos()
+        return
+    else:
+        print("opção invalida")
+        return

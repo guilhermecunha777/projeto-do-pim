@@ -1,0 +1,7 @@
+[
+  {
+    "id": 1,
+    "nome": "python",
+    "conteudo": "Em Python, para \"dar print\" (exibir algo na tela), utiliza-se a função print(). A sintaxe é simples: print(valor_a_ser_impresso). O valor a ser impresso pode ser uma string, um número, uma variável ou qualquer tipo de dado que você queira exibir"
+  }
+]

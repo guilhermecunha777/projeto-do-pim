@@ -28,36 +28,33 @@ def carregar_usuarios():
         except json.JSONDecodeError:
             return {}
 
-def salvar_professor(professor):
-    with open(CAMINHO_PROF, "w") as arquivo:
-        json.dump(professor, arquivo, indent=4)
 
-def carregar_professor():
-    if not os.path.exists(CAMINHO_PROF):
-        return {}
-    with open(CAMINHO_PROF, "r") as arquivo:
-        try:
-            return json.load(arquivo)
-        except json.JSONDecodeError:
-            return {}
+def lista_alunos():
+    alunos = carregar_dados(CAMINHO_ARQUIVO)
+    if not alunos:
+        print("nenhum aluno cadastrado.")
+        return
+    for idx, (nome, dados) in enumerate(alunos.items(), start=1):
+        print(f"{idx}. {nome} | ID: {dados.get('id', 'N/A')}")
 
 def autenticar_usuario():
     usuarios = carregar_usuarios()
     usuario = input("Digite o nome de usuário: ").strip()
 
-    #Verifica se o aluno esta bloqueado
+    # Verifica se o aluno está bloqueado
     pode, tempo_restante = seguranca.pode_tentar(usuario)
     if not pode:
-        print(f"Numero de tentativas maximo. Tente novamente em {tempo_restante} segundos")
+        print(f"Número de tentativas máximo. Tente novamente em {tempo_restante} segundos.")
         return
-    
+
     senha = input("Digite a senha: ").strip()
     senha_hash = gerar_hash(senha)
 
-    if usuario in usuarios and usuarios[usuario] == senha_hash:
+    if usuario in usuarios and usuarios[usuario]["senha"] == senha_hash:
         print("Login bem-sucedido!")
-        seguranca.resetar_tentativas(usuario) # limpa as tentativas apos o login
+        seguranca.resetar_tentativas(usuario)
         exibir_menu2()
+
         while True:
             try:
                 escolha2 = int(input("Selecione uma disciplina (0 para voltar): "))
@@ -75,32 +72,37 @@ def autenticar_usuario():
         print("Usuário ou senha incorretos.")
         bloqueio = seguranca.registrar_erro(usuario)
         if bloqueio:
-            print(f"Numero de tentativas maximo. Tente novamente em {tempo_restante} segundos")
+            print(f"Número de tentativas máximo. Tente novamente em {tempo_restante} segundos.")
+
+def salvar_professor(professor):
+    with open(CAMINHO_PROF, "w") as arquivo:
+        json.dump(professor, arquivo, indent=4)
+
+def carregar_professor():
+    if not os.path.exists(CAMINHO_PROF):
+        return {}
+    with open(CAMINHO_PROF, "r") as arquivo:
+        try:
+            return json.load(arquivo)
+        except json.JSONDecodeError:
+            return {}
 
 def autenticar_professor():
     professores = carregar_professor()
-    professor = input("digite o seu nome: ").strip()
-    senha = input("digite a sua senha: ").strip()
+    professor = input("Digite o seu nome: ").strip()
+    senha = input("Digite a sua senha: ").strip()
     senha_hash = gerar_hash(senha)
     
-    if professor in professores and professores[professor] == senha_hash:
-        print("login bem-sucedido!")
+    if professor in professores and professores[professor]["senha"] == senha_hash:
+        print("Login bem-sucedido!")
         menu_prof()
     else:
-        print("erro no login")
-
-def lista_alunos():
-    alunos = carregar_dados(CAMINHO_ARQUIVO)
-    if not alunos:
-        print("nenhum aluno cadastrado.")
-        return
-    for idx, aluno in enumerate(alunos, start=1):
-        print(f"{idx}. {aluno['nome']} | Idade: {aluno['idade']} |senha: {aluno['senha']}")
+        print("Erro no login")
 
 def lista_professores():
     professores = carregar_dados(CAMINHO_PROF)
     if not professores:
         print("nenhum professor cadastrado.")
         return
-    for idx, prof in enumerate(professores, start=1):
-        print(f"{idx}. {prof['nome']} | disciplina: {prof['disciplina']} ")
+    for idx, (nome, dados) in enumerate(professores.items(), start=1):
+        print(f"{idx}. {nome} | Disciplina: {dados['disciplina']}")

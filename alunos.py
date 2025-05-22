@@ -18,11 +18,20 @@ def cadastrar_alunos():
         return
     
     senha = input("Digite a senha: ").strip()
-
     senha_hash = gerar_hash(senha)
-    usuarios[usuario] = senha_hash
+
+    if usuarios:
+        ultimo_id = max(u["id"] for u in usuarios.values())
+        novo_id = ultimo_id +1
+    else:
+        novo_id = 1
+
+    usuarios[usuario] = {
+        "id": novo_id,
+        "senha": senha_hash
+    }
     salvar_usuarios(usuarios)
-    print("Usuário cadastrado com sucesso!")
+    print("Usuário cadastrado com sucesso! ID: {novo_id}")
 
 def remover_aluno():
     lista_alunos()

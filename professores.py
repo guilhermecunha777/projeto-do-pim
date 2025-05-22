@@ -13,12 +13,22 @@ def cadastrar_professor():
     professores = carregar_professor()
     nome = input("nome do professor: ").strip()
     senha = input("digite a senha: ").strip()
-    # disciplina = input("disciplina: ").strip()
-    
+    disciplina = input("disciplina: ").strip()
     senha_hash = gerar_hash(senha)
-    professores[nome] = senha_hash
+    
+    if professores:
+        ultimo_id = max(p["id"] for p in professores.values())
+        novo_id = ultimo_id + 1
+    else:
+        novo_id = 1
+
+    professores[nome] = {
+        "id": novo_id,
+        "senha": senha_hash,
+        "disciplina": disciplina 
+    }
     salvar_professor(professores)
-    print("professor cadastrado com sucesso!")
+    print("professor cadastrado com sucesso! ID: {novo_id}")
 
 def remover_professores():
     lista_professores()

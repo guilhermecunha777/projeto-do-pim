@@ -70,8 +70,7 @@ def autenticar_usuario():
             except ValueError:
                 print("Entrada inválida. Digite um número.")
         fim = datetime.now()
-        tempo_total = (fim - inicio).total_seconds()
-        registro(usuario, tempo_total)
+        registro(usuario, inicio, fim)
     else:
         print("Usuário ou senha incorretos.")
         bloqueio = seguranca.registrar_erro(usuario)

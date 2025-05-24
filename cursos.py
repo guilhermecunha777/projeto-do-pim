@@ -62,10 +62,10 @@ def menu_prof():
     elif opcao == '2':
         listar_cursos()
         return
-    elif escolha == "3":
+    elif opcao == "3":
         estatisticas_sistema()
         return
-    elif escolha == "4":
+    elif opcao == "4":
         estatisticas = EstatisticasLog(caminho_log)
         estatisticas.exibir_tudo()
     else:

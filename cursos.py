@@ -1,6 +1,5 @@
 # Módulo com cursos e disciplinas
 from utils import add_cursos,listar_cursos
-from notas import add_nota
 
 caminho = 'data/cursos.json'
 
@@ -51,16 +50,12 @@ def buscar_curso_por_nome():
 def menu_prof():
     print('1. adicionar um cursos')
     print('2. listar os cursos')
-    print('3. adicionar nota para aluno')
     opcao = input('digite um numero: ')
     if opcao =='1':
         add_cursos()
         return
     elif opcao == '2':
         listar_cursos()
-        return
-    elif opcao == '3':
-        add_cursos()
         return
     else:
         print("opção invalida")

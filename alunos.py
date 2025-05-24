@@ -29,7 +29,6 @@ def cadastrar_alunos():
     usuarios[usuario] = {
         "id": novo_id,
         "senha": senha_hash,
-        "nota":[]
     }
     salvar_usuarios(usuarios)
     print("Usuário cadastrado com sucesso! ID: {novo_id}")

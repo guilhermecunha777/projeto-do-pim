@@ -16,18 +16,17 @@ def gerar_hash(senha):
     return hashlib.sha256(senha.encode('utf-8')).hexdigest()
 
 def salvar_usuarios(usuarios):
-    with open(CAMINHO_ARQUIVO, "w") as arquivo:
-        json.dump(usuarios, arquivo, indent=4)
+    with open(CAMINHO_ARQUIVO, "w", encoding="utf-8") as arquivo:
+        json.dump(usuarios, arquivo, indent=2, ensure_ascii=False)
 
 def carregar_usuarios():
     if not os.path.exists(CAMINHO_ARQUIVO):
-        return {}
-    with open(CAMINHO_ARQUIVO, "r") as arquivo:
+        return []  # retorna lista, não dicionário
+    with open(CAMINHO_ARQUIVO, "r", encoding="utf-8") as arquivo:
         try:
             return json.load(arquivo)
         except json.JSONDecodeError:
-            return {}
-
+            return []
 
 def lista_alunos():
     alunos = carregar_dados(CAMINHO_ARQUIVO)

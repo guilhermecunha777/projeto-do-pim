@@ -26,12 +26,11 @@ O sistema possui várias funcionalidades organizadas por menus no terminal. Veja
 - Vincular professores a disciplinas
 - Matricular alunos em disciplinas
 
-### 📝 Notas e Frequência
-- Lançar notas para os alunos por disciplina
+### 📝 Frequência
 - Registrar frequência (presenças e faltas)
 
 ### 📊 Relatórios
-- Gerar boletins por aluno (notas e frequência)
+- Gerar boletins por aluno (frequência)
 - Ver lista de alunos por curso
 - Ver disciplinas ministradas por um professor
 

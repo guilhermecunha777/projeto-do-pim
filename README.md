@@ -1,53 +1,73 @@
-# 🎓 Sistema Educacional em Python
 
-Este é um projeto acadêmico que simula o funcionamento de um **sistema educacional simples**, feito com a linguagem Python. Ele permite o gerenciamento de **alunos, professores, cursos, disciplinas, notas e frequência**, tudo via terminal.
-
-O sistema foi dividido em módulos e simula um pequeno sistema de gestão escolar. Os dados são armazenados em arquivos `.json`, o que permite salvar as informações mesmo após fechar o programa.
+# 🎓 Sistema de Gestão Acadêmica – PIM UNIP
 
 ---
 
-## 📚 O que o Sistema Faz?
+## 📚 Sobre o Projeto
 
-O sistema possui várias funcionalidades organizadas por menus no terminal. Veja o que é possível fazer:
+Este sistema foi desenvolvido como **Projeto Integrado Multidisciplinar (PIM)** do **1º semestre** do curso de **Análise e Desenvolvimento de Sistemas** da **UNIP**.  
 
-### 👨‍🎓 Alunos
-- Cadastrar novos alunos
-- Listar todos os alunos cadastrados
-- Editar informações de alunos
-- Remover alunos do sistema
-
-### 👨‍🏫 Professores
-- Cadastrar professores
-- Listar e editar dados dos professores
-
-### 🏫 Cursos e Disciplinas
-- Criar cursos e disciplinas
-- Associar disciplinas a cursos
-- Vincular professores a disciplinas
-- Matricular alunos em disciplinas
-
-### 📝 Frequência
-- Registrar frequência (presenças e faltas)
-
-### 📊 Relatórios
-- Gerar boletins por aluno (frequência)
-- Ver lista de alunos por curso
-- Ver disciplinas ministradas por um professor
-
+A aplicação realiza a gestão de alunos, professores e cursos via terminal, utilizando arquivos **JSON** para armazenamento de dados.
 
 ---
 
-## 🔧 Tecnologias Utilizadas
+##  👥 Membros
 
-- Python 3.x
-- Armazenamento local com arquivos `.json`
-- Interface via terminal (modo texto)
+Este projeto foi desenvolvido pelos alunos da UNIP no 1º semestre de Análise e Desenvolvimento de Sistemas:
+
+-   [**Danilo Cardoso**](https://github.com/HenriTwo)
+    
+-   [**Fábio Henrique**](https://github.com/FabioHenrique9614)
+    
+-   [**Guilherme Henrique**](https://github.com/guilhermecunha777)
+    
+-   [**Leonardo Fischer**](https://github.com/LFischer2)
+    
+-   [**Lucca Vieira**](https://github.com/luccavsn)
+    
+-   [**Matheus Gabriel**](https://github.com/matheussteck)
 
 ---
 
-## 🚀 Como Executar o Projeto
+## ⚙️ Funcionalidades
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/guilhermecunha777/projeto-do-pim.git
+- ✅ Cadastro e autenticação de **alunos**  
+- ✅ Cadastro, autenticação e **bloqueio temporário** de **professores** após tentativas inválidas  
+- ✅ Cadastro e listagem de **cursos**  
+- ✅ Registro de logs de uso (data, hora, tempo de sessão, opção escolhida)  
+- ✅ Interface **CLI** (Command-Line Interface) com menu interativo  
 
+---
+
+## 🛠 Tecnologias e Bibliotecas
+
+| Tecnologia | Uso no projeto |
+|------------|----------------|
+| **Python 3.13** | Linguagem principal |
+| `json` | Leitura/escrita de dados |
+| `hashlib` | Criptografia das senhas com SHA-256 |
+| `os` | Limpeza de tela e manipulação de caminhos |
+| `time` / `datetime` | Controle de bloqueio e registro de tempo |
+
+Os dados são armazenados localmente em arquivos **`.json`**, não sendo necessário banco de dados externo.
+
+---
+
+## 📁 Estrutura do Projeto
+
+| Arquivo/Módulo | Responsabilidade |
+|----------------|------------------|
+| `main.py` | Menu principal e fluxo da aplicação |
+| `alunos.py` | Cadastro e login de alunos |
+| `professores.py` | Cadastro e login de professores |
+| `login.py` | Função de login (entrada de alunos e professores |
+| `cursos.py`| Função de cursos |
+| `seguranca.py`| Funções de segurança |
+| `utils.py` | Funções auxiliares: salvar/carregar dados, limpar tela |
+
+---
+
+## ▶️ Como Executar
+
+```bash
+git clone https://github.com/guilhermecunha777/projeto-do-pim.git

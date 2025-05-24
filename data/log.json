@@ -8,5 +8,15 @@
         "tempo_em_segundos": 1.750455
       }
     ]
+  },
+  "fafa": {
+    "entradas": 1,
+    "registros": [
+      {
+        "entrada": "24/05/2025 16:18:50",
+        "saida": "24/05/2025 16:18:57",
+        "tempo_em_segundos": 7.064441
+      }
+    ]
   }
 }

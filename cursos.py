@@ -28,7 +28,7 @@ def selecionar_disciplina(opcao):
     }
     return disciplinas.get(opcao, None)
 
-def buscar_curso_por_nome():
+def buscar_curso_por_nome():#não fui add
     try:
         with open(caminho, 'r', encoding='utf-8') as f:
             cursos= json.load(f)

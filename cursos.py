@@ -1,7 +1,8 @@
 # Módulo com cursos e disciplinas
 from utils import add_cursos,listar_cursos
-from estatisticas import estatisticas_sistema
+from estatisticas import estatisticas_sistema, EstatisticasLog
 
+caminho_log = "log.json"
 caminho = 'data/cursos.json'
 
 def exibir_menu2():
@@ -51,7 +52,8 @@ def buscar_curso_por_nome():#não fui add
 def menu_prof():
     print('1. adicionar um cursos')
     print('2. listar os cursos')
-    print("3 - Ver Estatísticas")
+    print("3. Ver quantidade de usuario")
+    print('4. Ver Estatísticas')
     opcao = input('digite um numero: ')
     
     if opcao =='1':
@@ -62,6 +64,11 @@ def menu_prof():
         return
     elif escolha == "3":
         estatisticas_sistema()
+        return
+    elif escolha == "4":
+        estatisticas = EstatisticasLog(caminho_log)
+        estatisticas.exibir_tudo()
     else:
         print("opção invalida")
         return
+

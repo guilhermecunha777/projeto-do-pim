@@ -28,7 +28,7 @@ def cadastrar_professor():
         "disciplina": disciplina 
     }
     salvar_professor(professores)
-    print("professor cadastrado com sucesso! ID: {novo_id}")
+    print(f"professor cadastrado com sucesso! ID: {novo_id}")
 
 def remover_professores():
     lista_professores()

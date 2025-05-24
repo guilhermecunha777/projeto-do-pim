@@ -1,4 +1,3 @@
-# Arquivo principal que executa o menu do sistema
 from alunos import cadastrar_alunos
 from professores import cadastrar_professor
 from login import autenticar_usuario, autenticar_professor

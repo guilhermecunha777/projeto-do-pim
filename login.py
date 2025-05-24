@@ -4,6 +4,7 @@ import os
 from utils import carregar_dados
 from cursos import exibir_menu2,selecionar_disciplina,menu_prof
 from seguranca import bloqueio_tentativas
+from progresso import registro
 
 
 CAMINHO_ARQUIVO = 'data/alunos.json'
@@ -21,12 +22,12 @@ def salvar_usuarios(usuarios):
 
 def carregar_usuarios():
     if not os.path.exists(CAMINHO_ARQUIVO):
-        return []  # retorna lista, não dicionário
-    with open(CAMINHO_ARQUIVO, "r", encoding="utf-8") as arquivo:
+        return {}
+    with open(CAMINHO_ARQUIVO, "r") as arquivo:
         try:
             return json.load(arquivo)
         except json.JSONDecodeError:
-            return []
+            return {}
 
 def lista_alunos():
     alunos = carregar_dados(CAMINHO_ARQUIVO)
@@ -40,7 +41,6 @@ def autenticar_usuario():
     usuarios = carregar_usuarios()
     usuario = input("Digite o nome de usuário: ").strip()
 
-    # Verifica se o aluno está bloqueado
     pode, tempo_restante = seguranca.pode_tentar(usuario)
     if not pode:
         print(f"Número de tentativas máximo. Tente novamente em {tempo_restante} segundos.")
@@ -51,6 +51,8 @@ def autenticar_usuario():
 
     if usuario in usuarios and usuarios[usuario]["senha"] == senha_hash:
         print("Login bem-sucedido!")
+        from datetime import datetime
+        inicio = datetime.now()
         seguranca.resetar_tentativas(usuario)
         exibir_menu2()
 
@@ -67,6 +69,9 @@ def autenticar_usuario():
                     print("Opção inválida. Tente novamente.")
             except ValueError:
                 print("Entrada inválida. Digite um número.")
+        fim = datetime.now()
+        tempo_total = (fim - inicio).total_seconds()
+        registro(usuario, tempo_total)
     else:
         print("Usuário ou senha incorretos.")
         bloqueio = seguranca.registrar_erro(usuario)

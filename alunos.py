@@ -22,7 +22,7 @@ def cadastrar_alunos():
 
     if usuarios:
         ultimo_id = max(u["id"] for u in usuarios.values())
-        novo_id = ultimo_id +1
+        novo_id = ultimo_id + 1
     else:
         novo_id = 1
 
@@ -30,8 +30,9 @@ def cadastrar_alunos():
         "id": novo_id,
         "senha": senha_hash,
     }
+
     salvar_usuarios(usuarios)
-    print("Usuário cadastrado com sucesso! ID: {novo_id}")
+    print(f"Usuário cadastrado com sucesso! ID: {novo_id}")
 
 def remover_aluno():
     lista_alunos()

@@ -8,5 +8,15 @@
         "id": 2,
         "senha": "3a1208de7e66f1706c65c2715c6c3fd4bd13d141a1b29ce267944c94e3cae0ec",
         "disciplina": "java"
+    },
+    "jaison mendes": {
+        "id": 3,
+        "senha": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+        "disciplina": "java"
+    },
+    "faust\u00e3o": {
+        "id": 4,
+        "senha": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+        "disciplina": "nosql"
     }
 }

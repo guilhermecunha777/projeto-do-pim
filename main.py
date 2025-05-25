@@ -10,7 +10,6 @@ def exibir_menu():
         print("3 - Cadastrar do aluno")
         print("4 - Cadastrar do professor")
         print("0 - Sair")
-
         escolha = input("Escolha uma opção: ")
 
         if escolha == "1":

@@ -23,5 +23,80 @@
         "tempo_em_segundos": 7.064441
       }
     ]
+  },
+  "mat": {
+    "entradas": 2,
+    "registros": [
+      {
+        "entrada": "24/05/2025 22:04:42",
+        "saida": "24/05/2025 22:04:45",
+        "tempo_em_segundos": 2.608419
+      },
+      {
+        "entrada": "24/05/2025 22:14:42",
+        "saida": "24/05/2025 22:14:45",
+        "tempo_em_segundos": 3.430822
+      }
+    ]
+  },
+  "ig": {
+    "entradas": 1,
+    "registros": [
+      {
+        "entrada": "24/05/2025 22:14:13",
+        "saida": "24/05/2025 22:14:18",
+        "tempo_em_segundos": 5.096658
+      }
+    ]
+  },
+  "beatriz": {
+    "entradas": 1,
+    "registros": [
+      {
+        "entrada": "24/05/2025 22:15:15",
+        "saida": "24/05/2025 22:15:20",
+        "tempo_em_segundos": 4.936133
+      }
+    ]
+  },
+  "taylor swift": {
+    "entradas": 1,
+    "registros": [
+      {
+        "entrada": "24/05/2025 22:15:32",
+        "saida": "24/05/2025 22:15:36",
+        "tempo_em_segundos": 3.168193
+      }
+    ]
+  },
+  "kanye west": {
+    "entradas": 1,
+    "registros": [
+      {
+        "entrada": "24/05/2025 22:15:48",
+        "saida": "24/05/2025 22:15:50",
+        "tempo_em_segundos": 2.182608
+      }
+    ]
+  },
+  "vinicius13": {
+    "entradas": 1,
+    "registros": [
+      {
+        "entrada": "24/05/2025 22:16:03",
+        "saida": "24/05/2025 22:16:05",
+        "tempo_em_segundos": 1.735852
+      }
+    ]
+  },
+  "davihd": {
+    "entradas": 1,
+    "registros": [
+      {
+        "entrada": "24/05/2025 22:16:11",
+        "saida": "24/05/2025 22:16:13",
+        "tempo_em_segundos": 1.992288
+      }
+    ]
   }
 }
